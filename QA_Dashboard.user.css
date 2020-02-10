@@ -1,0 +1,222 @@
+/* ==UserStyle==
+
+@name QA_Dashboard
+@namespace github.com/Personwithhat/StylusStyles
+@homepageURL https://github.com/Personwithhat/StylusStyles
+@version 1.0.0
+@updateURL https://github.com/Personwithhat/StylusStyles/raw/master/QA_Dashboard.user.css
+@description Style for QA Dashboard
+@author PersonWithHat
+@license GNU-V3.0
+
+==/UserStyle== */
+
+@-moz-document url-prefix("https://qadashboard") {
+:root{
+    --MT4: hsl(180, 4%, 49%); /* Why is this muted text so bright? MT3 doesn't work, too dim. >.> */
+    
+    /* Warning-ish orange: hsl(15, 94%, 38%);  Rust: hsl(10, 99%, 34%) */ 
+    /* Orig: hsl(0, 86%, 32%)  */
+    --ALARM: hsl(0, 86%, 32%); /* Use Alarm for block shading and alarmT for alarm text and borders?  hsl(1, 85%, 45%) hsl(3, 72%, 39%)*/
+    --ALARM_TEXT: hsl(0, 0%, 69%); /* White on red better than black on red....and it helps differentiate from  pink. */
+    --BADGE_TEXT: #000; /* Use 'transparent' to hide. */
+    /* 
+    --ALARM: hsl(0, 100%, 37%);  or hsl(0, 0%, 69%)
+    --ALARM_TEXT: #000;
+    */
+}   
+    
+    /* Hide scrollbars, don't want'em. */
+    ::-webkit-scrollbar { display: none; }
+
+/* 
+    Buttons
+*/
+    .btn-link { color: var(--L1); }
+    
+    .btn-gray-200 { border-color: var(--M3); background-color: var(--M2); color: var(--MT1); }
+    .btn-gray-200:hover { border-color: var(--M3); background-color: var(--M1); color: var(--HL); }
+    .btn-gray-200:not(:disabled):not(.disabled).active { border-color: var(--M3); background-color: var(--M1); color: var(--HL); }
+    .btn-gray-200:not(:disabled):not(.disabled).active:focus { box-shadow: none; }
+    .btn-gray-200:not(:disabled):not(.disabled):active { border-color: var(--M3); background-color: var(--M2); color: var(--MT1); }
+    .btn-gray-200:not(:disabled):not(.disabled):active:focus { box-shadow: none; }
+
+    .page-item.disabled .page-link { background-color: var(--M1); border-color: var(--M3); color: var(--MT3); }
+    .page-item .page-link { background-color: var(--M1); border-color: var(--M3); color: var(--MT1); box-shadow: none !important; }
+    .page-item:not(:disabled):not(.disabled):hover .page-link {color: var(--HL);}
+    
+    /* TODO: Can maybe just tweak opacity, make it brighter when selecting the button? Instead of applying HL color to text.
+        Buttons may be large, so filling them in is too much of a brightness change.
+        If only touching border, can be a vibrant/bright color since it's thin. Not too bright, but ye know.
+    */
+    .btn-primary { border-color: var(--G); background-color: inherit; color: var(--G); box-shadow: none !important; }
+    .btn-primary:hover, .btn-primary:not(:disabled):not(.disabled):active { border-color: var(--G); background-color: inherit; color: var(--HL); }
+    .btn-secondary { border-color: var(--M3); background-color: inherit; color: var(--MT1); box-shadow: none !important; }
+    .btn-secondary:hover, .btn-secondary:not(:disabled):not(.disabled):active { border-color: var(--M3); background-color: inherit; color: var(--HL); }
+    .btn-danger { border-color: var(--ALARMT); background-color: inherit; color: var(--ALARMT); box-shadow: none !important; }
+    .btn-danger:hover, .btn-danger:not(:disabled):not(.disabled):active { border-color: var(--ALARMT); background-color: inherit; color: var(--HL); }
+
+
+/*
+    Badges and badge colors
+*/
+    .badge:not(:disabled):not(.disabled) { background-color: inherit; border: 1px solid var(--M3); color: var(--MT1); box-shadow: none !important; }
+    a.badge:hover {background-color: inherit; color: var(--HL) !important; } /* Add glow/shadow instead? */
+    
+    /* Maybe use these? hsl(34, 33%, 27%)  hsl(48, 91%, 44%)  hsl(202, 59%, 35%)*/
+    /*.badge-priority-p1 { border: none; background-color: hsl(0, 93%, 27%); color: var(--M1) !important; }
+    .badge-priority-p2 { border: none ;background-color: hsl(43, 93%, 27%); color: var(--M1) !important; }
+    .badge-priority-p3 { border: none; background-color: hsl(209, 93%, 27%); color: var(--M1) !important;}
+    */
+
+    /*
+    .badge-priority-p1 { border: none; background-color: hsl(0, 86%, 37%); color: hsl(0, 86%, 7%) !important; }
+    .badge-priority-p2 { border: none ;background-color: hsl(44, 94%, 37%); color: hsl(44, 94%, 3%) !important; }
+    .badge-priority-p3 { border: none; background-color: hsl(196, 93%, 37%); color: hsl(196, 93%, 1%) !important;}
+    */
+        
+    .badge-status-failed:not(:disabled):not(.disabled), 
+        .badge-priority-p1:not(:disabled):not(.disabled) { border: none; background-color: var(--ALARM); color: var(--ALARM_TEXT) !important; }
+    .badge-status-skipped:not(:disabled):not(.disabled),
+        .badge-priority-p2:not(:disabled):not(.disabled) { border: none ;background-color: hsl(44, 94%, 33%); color: var(--BADGE_TEXT) !important; }
+    .badge-main-product:not(:disabled):not(.disabled),
+        .badge-priority-p3:not(:disabled):not(.disabled) { border: none; background-color: hsl(196, 93%, 33%); color: var(--BADGE_TEXT)  !important;}
+    
+    .badge-status-active:not(:disabled):not(.disabled),
+        .badge-status-passed:not(:disabled):not(.disabled) { border: none; background-color: hsl(92, 99%, 24%); color: var(--BADGE_TEXT)  !important;}
+    /*.badge-status-passed:not(:disabled):not(.disabled) { border: none; background-color: hsl(151, 100%, 27%); color: var(--BADGE_TEXT)  !important;}*/
+
+    .badge-status-inactive:not(:disabled):not(.disabled),
+        .badge-status-executing:not(:disabled):not(.disabled), /* Or make it use 'main-product' color instead? Hrm. */
+        .badge-status-pending:not(:disabled):not(.disabled) { border: none; background-color: hsl(181, 21%, 38%); color: var(--BADGE_TEXT)  !important;}
+
+    /* Too many colors sometimse(?). Just as in code-syntaxing there is an overload of tints/shades so it's hard to focuson a particular one. */
+    .badge-status-cancelled:not(:disabled):not(.disabled)  { border: none; background-color: hsl(276, 40%, 47%); color: var(--BADGE_TEXT)  !important;}
+    .badge-status-blocked:not(:disabled):not(.disabled), 
+        .badge-status-expired:not(:disabled):not(.disabled)  { border: none; background-color: hsl(334, 43%, 48%); color: var(--BADGE_TEXT)  !important;}
+    
+/*
+    Login Page 
+*/
+    .card { background-color: var(--M1); } 
+    .form-control { border-color: var(--M3); background-color: var(--M1); color: var(--MT1); }
+    .form-control:focus { border-color: var(--M3); background-color: var(--M2); color: var(--MT1);  box-shadow: none;}
+    .input-group-text { border-color: var(--M3); background-color: var(--M1); color: var(--MT1); }
+    .text-muted { color: var(--MT4) !important; }
+    
+/* 
+    Pop Ups
+*/
+    .modal-danger .modal-header { background-color: var(--M1); color: var(--ALARMT); }
+    .modal-danger .modal-content { border-color: var(--ALARMT);}
+
+    .modal-header, .modal-body, .modal-footer { background-color: var(--M1); border-color: var(--M3); }
+    .nav-tabs .nav-link   { border-color: var(--M3); background-color: var(--M2); color: var(--MT1); }
+    .nav-tabs .nav-link.active, .nav-tabs .nav-link:hover  { border-color: var(--M3); background-color: var(--M1); color: var(--HL); }
+    .nav-tabs .nav-link.active { border-bottom-color: var(--M1); }
+    a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover{ color: var(--HL); }
+    .tab-content { border-color: var(--M3); }
+    .close { color: var(--ALARMT); text-shadow: none; opacity: 0.6; }
+    .close:hover { color: var(--ALARMT); text-shadow: none; opacity: 1; }
+    .ql-toolbar.ql-snow { border-color: var(--M3); } /* #06c interseting hover/select blue. */
+    /* TODO: text-option toolbar is ignoring every color configuration. Nno real way to modify :\ */
+
+    .form-group.required .control-label:after, .nav-link.required:after { color: var(--ALARMT); }
+    /*Copy-Paste, same stupid search/select bars.*/
+        /* Pesky react search bar */
+        .form-group div[class*="control"] *     { color: var(--MT1); } /* #react-select-XXX-input, the text you type in.*/
+        .form-group div[class*="placeholder"]   { color: var(--MT3); } 
+        .form-group div[class*="control"]       { background-color: var(--M1); border-color: var(--M3); box-shadow: none !important; }
+        .form-group div[class*="control"]:hover { background-color: var(--M2); border-color: var(--M3); }
+
+        /* TODO: don't like the search selected value colors......use inverse? */
+        .form-group div[class*="multiValue"], .form-group div[class*="multiValue"] span { color: var(--BT2); background-color: var(--B2);  }
+        .form-group div[class*="multiValue"]  div:nth-child(2):hover, .form-group div[class*="multiValue"]  div:nth-child(2):hover * 
+            { color: var(--HL); background-color: var(--ALARM); }       
+        
+        /* drop down form text*/
+        .form-group div[class*="menu"]         { background-color: var(--M1); border-color: var(--M3); }
+        .form-group div[class*="option"]       { color: var(--MT1); background-color: var(--M1);  }
+        .form-group div[class*="option"]:hover { color: var(--HL); background-color: var(--M2);  }
+    
+    .dropdown-menu { background-color: var(--B1);  }
+    .dropdown-item, .dropdown-item:hover svg { color: var(--BT1); }
+    .dropdown-item:hover { background-color: var(--B2); color: var(--HL);}
+
+/* 
+    Standard page 
+*/
+    /* Header */
+    .app-header { background-color: var(--M1); border-bottom-color: var(--M3); }
+    .app-header .navbar-toggler-icon { 
+        /* Original has the following, it uses SCSS. Is it possible to get something similar here? => stroke='#{$navbar-dark-color}'
+           Current color: MT1 */
+        background-image: 
+        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='%23bac4c4' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>")
+    }
+    .app-header .navbar-toggler:hover .navbar-toggler-icon{
+        /* Current color: HL */
+        background-image: 
+        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='%23dbb10a' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>")
+    }
+    .navbar-nav .nav-link { color: var(--MT2); }
+    .navbar-nav .nav-link:hover { color: var(--HL); }
+    
+    /* Breadcrumb */
+    .breadcrumb { background-color: var(--M1); border-bottom-color: var(--M3); }
+    .breadcrumb-item a { color: var(--MT1); }
+    .breadcrumb-item a:hover { color: var(--HL); }
+    .breadcrumb-item.active { color: var(--MT1); }
+    
+    /* Pesky react search bar */
+        .d-flex div[class*="control"] *     { color: var(--MT1); } /* #react-select-XXX-input, the text you type in.*/
+        .d-flex div[class*="placeholder"]   { color: var(--MT3); } 
+        .d-flex div[class*="control"]       { background-color: var(--M1); border-color: var(--M3); box-shadow: none !important; }
+        .d-flex div[class*="control"]:hover { background-color: var(--M2); border-color: var(--M3); }
+
+        /* TODO: don't like the search selected value colors......use inverse? */
+        .d-flex div[class*="multiValue"], .d-flex div[class*="multiValue"] span { color: var(--BT2); background-color: var(--B2);  }
+        .d-flex div[class*="multiValue"]  div:nth-child(2):hover, .d-flex div[class*="multiValue"]  div:nth-child(2):hover * 
+            { color: var(--HL); background-color: var(--ALARM); }
+        
+        /* drop down form text*/
+        .d-flex div[class*="menu"]         { background-color: var(--M1); border-color: var(--M3); }
+        .d-flex div[class*="option"]       { color: var(--MT1); background-color: var(--M1);  }
+        .d-flex div[class*="option"]:hover { color: var(--HL); background-color: var(--M2);  }
+    
+    /* Search result list of TC/etc. */
+    .list-group-item { background-color: var(--M1); color: var(--MT1) !important; }
+    .list-group-item:hover, .list-group-item:focus { background-color: var(--M2); color: var(--MT2) !important; }
+    .list-group-item.active { background-color: var(--M2); color: var(--MT1); }
+    .border-right {border-right-color: var(--M3) !important; }
+    
+    /* View on right side */
+    .tab-content { background-color: var(--M1); }
+    .ql-container.ql-snow { border-color: var(--M3) !important; }
+    .table-sm td { color: var(--MT1); border-color: var(--M3);  }
+    .table, .table .thead-light th { background-color: var(--M1); border-color: var(--M3); color: var(--MT1); }
+    pre { color: var(--MT1); }
+    .border { border-color: var(--M3) !important; }    
+    
+    /* Sidebar on the left side*/
+    .sidebar .nav        { background-color: var(--B1); }
+    .sidebar .nav-title  { background-color: var(--B1); color: var(--BT2); }
+    .sidebar .nav-link, .sidebar .nav-link .nav-icon { background-color: var(--B1); color: var(--BT1); }
+    .sidebar .nav-link.active, .sidebar .nav-link.active .nav-icon, .sidebar .nav-link:hover .nav-icon { background-color: var(--B2); color: var(--BT1); }
+    .sidebar .nav-link:hover { background-color: var(--B2); color: var(--HL); }
+    .sidebar .sidebar-minimizer { display: none;}
+    
+    /* Footer */
+    .app-footer { background-color: var(--M1); color: var(--MT1); border-top-color: var(--M3); }
+    
+/* 
+    Automation
+*/
+    .card-header { background-color: var(--M2); } /* Not the best of header-colors...need a different tint or slightly darker? hrm. */
+    .card, .card-body, .card-header { border-color: var(--M3);}
+    .hoverable-card:hover { background-color: var(--M2); }
+    .b-t-1, .b-r-1, .b-b-1, .b-b-2, .b-r-2 {border-color: var(--M3);} /* Under build->execution tab.... wth*/
+    /* .attachment-thumbnail   #CED4DA <-- This one looks good on top of my background! As an image/etc. prety nice. */
+
+    /*TODO: Automation summary chart/progress-bar. Can't modify chart colors via CSS. */        
+}
