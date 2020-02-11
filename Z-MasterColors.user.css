@@ -11,11 +11,11 @@
 
 ==/UserStyle== */
 
+@-moz-document url-prefix("https://qadashboard") {
 /*
 @-moz-document url-prefix("http://buildmaster.hq.marquee.net"), url-prefix("https://nagios"), url-prefix("http://jira"), url-prefix("https://jira"), domain("jira.atlassian.com"), regexp("https://[^./]*\\.slack\\.com/(?!pricing)(?!security).*"), regexp("chrome-extension://.*"), regexp(".*") {
 */
-@-moz-document url-prefix("https://qadashboard") {
-	
+
 /*
     WARNING: To allow other themes to override this 'default' theme, you need to subscribe to this one first.
 */
@@ -30,7 +30,7 @@
   --M1: #0e0f06;    /* Main text background */
     --M2: #1D1E16;  /* Highlighted/selected row on Main-Text background*/
     --M3: #424242;  /* Borders/divisors on Main-text background*/
-    --MT1: hsl(180, 8%, 75%); /* Most of the text */
+    --MT1: hsl(180, 8%, 73%); /* Most of the text */
     --MT2: hsl(180, 8%, 79%); /* Emphasized text */
     --MT3: hsl(180, 4%, 36%); /* Muted text */
         
