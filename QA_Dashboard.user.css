@@ -11,7 +11,7 @@
 
 ==/UserStyle== */
 
-@-moz-document url-prefix("https://qadashboard") {
+@-moz-document url-prefix("https://qadashboard"), url-prefix("http://172.28.192.83") {
 :root{
     --MT4: hsl(180, 4%, 49%); /* Why is this muted text so bright? MT3 doesn't work, too dim. >.> */
     
@@ -185,7 +185,7 @@
         .d-flex div[class*="option"]:hover { color: var(--HL); background-color: var(--M2);  }
     
     /* Search result list of TC/etc. */
-    .list-group-item { background-color: var(--M1); color: var(--MT1) !important; }
+    .list-group-item { background-color: var(--M1); color: var(--MT1) !important; border-top-color: var(--M3); border-bottom-color: var(--M3); }
     .list-group-item:hover, .list-group-item:focus { background-color: var(--M2); color: var(--MT2) !important; }
     .list-group-item.active { background-color: var(--M2); color: var(--MT1); }
     .border-right {border-right-color: var(--M3) !important; }
