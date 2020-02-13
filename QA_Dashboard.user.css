@@ -3,7 +3,7 @@
 @name QA_Dashboard
 @namespace github.com/Personwithhat/StylusStyles
 @homepageURL https://github.com/Personwithhat/StylusStyles
-@version 1.0.2
+@version 1.0.3
 @updateURL https://github.com/Personwithhat/StylusStyles/raw/master/QA_Dashboard.user.css
 @description Style for QA Dashboard
 @author PersonWithHat
@@ -11,7 +11,7 @@
 
 ==/UserStyle== */
 
-@-moz-document url-prefix("https://qadashboard"), url-prefix("http://172.28.192.83") {
+@-moz-document url-prefix("https://qadashboard"), url-prefix("http://172.28.192.83"), url-prefix("http://172.28.184.82") {
 :root{
     --MT4: hsl(180, 4%, 49%); /* Why is this muted text so bright? MT3 doesn't work, too dim. >.> */
     
@@ -56,7 +56,14 @@
     .btn-danger { border-color: var(--ALARMT); background-color: inherit; color: var(--ALARMT); box-shadow: none !important; }
     .btn-danger:hover, .btn-danger:not(:disabled):not(.disabled):active { border-color: var(--ALARMT); background-color: inherit; color: var(--HL); }
 
-
+    /* Manual test-execution buttons.  Colors copies of badge setup. */
+    .btn-outline-primary { border-color: var(--M3); color: var(--M3); }
+    .btn-outline-primary:hover, .btn-outline-primary:not(:disabled):not(.disabled).active, .btn-outline-primary:not(:disabled):not(.disabled):active, .show>.btn-outline-primary.dropdown-toggle { border-color: var(--M3); background-color: inherit; }
+    .btn-outline-primary:hover .fa-check-circle, .btn-outline-primary:not(:disabled):not(.disabled).active .fa-check-circle { color: hsl(92, 99%, 24%); }
+    .btn-outline-primary:hover .fa-arrow-alt-circle-right, .btn-outline-primary:not(:disabled):not(.disabled).active .fa-arrow-alt-circle-right { color: hsl(44, 94%, 33%); }
+    .btn-outline-primary:hover .fa-minus-circle, .btn-outline-primary:not(:disabled):not(.disabled).active .fa-minus-circle { color: hsl(334, 43%, 48%); }
+    .btn-outline-primary:hover .fa-times-circle, .btn-outline-primary:not(:disabled):not(.disabled).active .fa-times-circle { color: var(--ALARM); }    
+    
 /*
     Badges and badge colors
 */
@@ -74,7 +81,7 @@
     .badge-priority-p2 { border: none ;background-color: hsl(44, 94%, 37%); color: hsl(44, 94%, 3%) !important; }
     .badge-priority-p3 { border: none; background-color: hsl(196, 93%, 37%); color: hsl(196, 93%, 1%) !important;}
     */
-        
+    
     .badge-status-failed:not(:disabled):not(.disabled), 
         .badge-priority-p1:not(:disabled):not(.disabled) { border: none; background-color: var(--ALARM); color: var(--ALARM_TEXT) !important; }
     .badge-status-skipped:not(:disabled):not(.disabled),
@@ -114,6 +121,8 @@
     .nav-tabs .nav-link   { border-color: var(--M3); background-color: var(--M2); color: var(--MT1); }
     .nav-tabs .nav-link.active, .nav-tabs .nav-link:hover  { border-color: var(--M3); background-color: var(--M1); color: var(--HL); }
     .nav-tabs .nav-link.active { border-bottom-color: var(--M1); }
+    .nav-tabs .nav-link { padding: 0.2rem 0.66rem; } /* Tabs are huge, making them smaller. */
+    .nav-tabs .nav-item { margin-right: 0.2rem; }
     a:not([href]):not([tabindex]):focus, a:not([href]):not([tabindex]):hover{ color: var(--HL); }
     .tab-content { border-color: var(--M3); }
     .close { color: var(--ALARMT); text-shadow: none; opacity: 0.6; }
@@ -128,7 +137,8 @@
         .form-group div[class*="placeholder"]   { color: var(--MT3); } 
         .form-group div[class*="control"]       { background-color: var(--M1); border-color: var(--M3); box-shadow: none !important; }
         .form-group div[class*="control"]:hover { background-color: var(--M2); border-color: var(--M3); }
-
+        .form-group span[class*="indicatorSeparator"] { background-color: var(--M3); }
+    
         /* TODO: don't like the search selected value colors......use inverse? */
         .form-group div[class*="multiValue"], .form-group div[class*="multiValue"] span { color: var(--BT2); background-color: var(--B2);  }
         .form-group div[class*="multiValue"]  div:nth-child(2):hover, .form-group div[class*="multiValue"]  div:nth-child(2):hover * 
@@ -197,6 +207,10 @@
     .table, .table .thead-light th { background-color: var(--M1); border-color: var(--M3); color: var(--MT1); }
     pre { color: var(--MT1); }
     .border { border-color: var(--M3) !important; }    
+    .chartjs-render-monitor { background-color: hsl(182, 3%, 38%); } /* HACK: to see black numbers in center.*/
+    
+    /* HACK? When viewing TC it lights up */ 
+    .disabled-hover:hover { background-color: var(--M1) !important;}
     
     /* Sidebar on the left side*/
     .sidebar .nav        { background-color: var(--B1); }

@@ -3,7 +3,7 @@
 @name Slack Night Mode - CUSTOM
 @namespace github.com/Personwithhat/StylusStyles
 @homepageURL https://github.com/Personwithhat/StylusStyles
-@version 1.0.0
+@version 1.0.1
 @updateURL https://github.com/Personwithhat/StylusStyles/raw/master/Slack_Dark_Custom.user.css
 @description Style Slack
 @author PersonWithHat
@@ -12,6 +12,12 @@
 ==/UserStyle== */
 
 @-moz-document regexp("https://[^./]*\\.slack\\.com/(?!pricing)(?!security).*") {
+/* Addendum: The stupid bonkers-annoying to trace white square on notifications. A box-shadow... Ugh >:V */
+/*.p-archives_banner { --saf-0: var(--M1); --saf-1: var(--M1); }*/
+.p-message_pane * { --saf-0: var(--M1) !important; --saf-1: var(--M1) !important; }
+.p-message_pane__top_banners>.p-message_pane__search_tip_banner { background-color: var(--M2); box-shadow: none; }
+body:not(.p-client_desktop--ia-top-nav) .p-message_pane .p-message_pane__top_banners:not(:empty)+div .c-message_list.c-virtual_list--scrollbar>.c-scrollbar2__hider:before, body:not(.p-client_desktop--ia-top-nav) .p-message_pane .p-message_pane__top_banners:not(:empty)+div .c-message_list.c-virtual_list--scrollbar>.c-scrollbar__hider:before, body:not(.p-client_desktop--ia-top-nav) .p-message_pane .p-message_pane__top_banners:not(:empty)+div .c-message_list:not(.c-virtual_list--scrollbar):before { --saf-0: var(--M1) !important; --saf-1: var(--M1) !important; border-bottom-color: var(--M3); }
+
 /* Unsorted additions */
 /* Never hide active/away markings, even when selecting in channel etc. */
 .p-channel_sidebar__channel--im-slackbot:before, 
