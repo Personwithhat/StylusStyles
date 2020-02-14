@@ -3,7 +3,7 @@
 @name QA_Dashboard
 @namespace github.com/Personwithhat/StylusStyles
 @homepageURL https://github.com/Personwithhat/StylusStyles
-@version 1.0.3
+@version 1.0.4
 @updateURL https://github.com/Personwithhat/StylusStyles/raw/master/QA_Dashboard.user.css
 @description Style for QA Dashboard
 @author PersonWithHat
@@ -16,19 +16,44 @@
     --MT4: hsl(180, 4%, 49%); /* Why is this muted text so bright? MT3 doesn't work, too dim. >.> */
     
     /* Warning-ish orange: hsl(15, 94%, 38%);  Rust: hsl(10, 99%, 34%) */ 
+     /* #06c interesting hover/select blue. */
     /* Orig: hsl(0, 86%, 32%)  */
     --ALARM: hsl(0, 86%, 32%); /* Use Alarm for block shading and alarmT for alarm text and borders?  hsl(1, 85%, 45%) hsl(3, 72%, 39%)*/
     --ALARM_TEXT: hsl(0, 0%, 69%); /* White on red better than black on red....and it helps differentiate from  pink. */
-    --BADGE_TEXT: #000; /* Use 'transparent' to hide. */
     /* 
-    --ALARM: hsl(0, 100%, 37%);  or hsl(0, 0%, 69%)
-    --ALARM_TEXT: #000;
+        --ALARM: hsl(0, 100%, 37%);  or hsl(0, 0%, 69%)
+        --ALARM_TEXT: #000;
     */
+
+    /* Status Colors: defaults. */
+    /*
+    --status-pending:   #e9ecef;
+    --status-executing: #17a2b8;
+    --status-passed:    #4dbd74;
+    --status-skipped:   #f8cb00;
+    --status-blocked:   #e83e8c;
+    --status-failed:    #f86c6b;
+    --status-cancelled: #6c757d;*/
+
+    /* Status Colors: Dark-mode */
+    --BADGE_TEXT:       #000;
+    --status-pending:   hsl(181, 21%, 38%);
+    --status-executing: hsl(196, 93%, 33%); 
+    --status-passed:    hsl(92, 99%, 24%);
+    --status-skipped:   hsl(44, 94%, 33%);
+    --status-blocked:   hsl(334, 43%, 48%);
+    --status-failed:    var(--ALARM);
+    --status-cancelled: hsl(276, 40%, 47%);
+    
+    /* Chart.js colors */
+    --chart-border: var(--M1);
+    --chart-text-color: var(--MT1);
 }   
     
     /* Hide scrollbars, don't want'em. */
     ::-webkit-scrollbar { display: none; }
-
+    .ps__rail-y, .ps__rail-x { display: none !important; } /* Side-dash scrollbar, unecessary atm. */
+    
 /* 
     Buttons
 */
@@ -56,13 +81,13 @@
     .btn-danger { border-color: var(--ALARMT); background-color: inherit; color: var(--ALARMT); box-shadow: none !important; }
     .btn-danger:hover, .btn-danger:not(:disabled):not(.disabled):active { border-color: var(--ALARMT); background-color: inherit; color: var(--HL); }
 
-    /* Manual test-execution buttons.  Colors copies of badge setup. */
+    /* Manual test-execution check-off/status buttons */
     .btn-outline-primary { border-color: var(--M3); color: var(--M3); }
     .btn-outline-primary:hover, .btn-outline-primary:not(:disabled):not(.disabled).active, .btn-outline-primary:not(:disabled):not(.disabled):active, .show>.btn-outline-primary.dropdown-toggle { border-color: var(--M3); background-color: inherit; }
-    .btn-outline-primary:hover .fa-check-circle, .btn-outline-primary:not(:disabled):not(.disabled).active .fa-check-circle { color: hsl(92, 99%, 24%); }
-    .btn-outline-primary:hover .fa-arrow-alt-circle-right, .btn-outline-primary:not(:disabled):not(.disabled).active .fa-arrow-alt-circle-right { color: hsl(44, 94%, 33%); }
-    .btn-outline-primary:hover .fa-minus-circle, .btn-outline-primary:not(:disabled):not(.disabled).active .fa-minus-circle { color: hsl(334, 43%, 48%); }
-    .btn-outline-primary:hover .fa-times-circle, .btn-outline-primary:not(:disabled):not(.disabled).active .fa-times-circle { color: var(--ALARM); }    
+    .btn-outline-primary:hover .fa-check-circle, .btn-outline-primary:not(:disabled):not(.disabled).active .fa-check-circle { color: var(--status-passed); }
+    .btn-outline-primary:hover .fa-arrow-alt-circle-right, .btn-outline-primary:not(:disabled):not(.disabled).active .fa-arrow-alt-circle-right { color: var(--status-skipped); }
+    .btn-outline-primary:hover .fa-minus-circle, .btn-outline-primary:not(:disabled):not(.disabled).active .fa-minus-circle { color: var(--status-blocked); }
+    .btn-outline-primary:hover .fa-times-circle, .btn-outline-primary:not(:disabled):not(.disabled).active .fa-times-circle { color: var(--status-failed); }    
     
 /*
     Badges and badge colors
@@ -70,37 +95,24 @@
     .badge:not(:disabled):not(.disabled) { background-color: inherit; border: 1px solid var(--M3); color: var(--MT1); box-shadow: none !important; }
     a.badge:hover {background-color: inherit; color: var(--HL) !important; } /* Add glow/shadow instead? */
     
-    /* Maybe use these? hsl(34, 33%, 27%)  hsl(48, 91%, 44%)  hsl(202, 59%, 35%)*/
-    /*.badge-priority-p1 { border: none; background-color: hsl(0, 93%, 27%); color: var(--M1) !important; }
-    .badge-priority-p2 { border: none ;background-color: hsl(43, 93%, 27%); color: var(--M1) !important; }
-    .badge-priority-p3 { border: none; background-color: hsl(209, 93%, 27%); color: var(--M1) !important;}
-    */
-
-    /*
-    .badge-priority-p1 { border: none; background-color: hsl(0, 86%, 37%); color: hsl(0, 86%, 7%) !important; }
-    .badge-priority-p2 { border: none ;background-color: hsl(44, 94%, 37%); color: hsl(44, 94%, 3%) !important; }
-    .badge-priority-p3 { border: none; background-color: hsl(196, 93%, 37%); color: hsl(196, 93%, 1%) !important;}
-    */
-    
     .badge-status-failed:not(:disabled):not(.disabled), 
-        .badge-priority-p1:not(:disabled):not(.disabled) { border: none; background-color: var(--ALARM); color: var(--ALARM_TEXT) !important; }
+        .badge-priority-p1:not(:disabled):not(.disabled) { border: none; background-color: var(--status-failed); color: var(--ALARM_TEXT) !important; }
     .badge-status-skipped:not(:disabled):not(.disabled),
-        .badge-priority-p2:not(:disabled):not(.disabled) { border: none ;background-color: hsl(44, 94%, 33%); color: var(--BADGE_TEXT) !important; }
+        .badge-priority-p2:not(:disabled):not(.disabled) { border: none ;background-color: var(--status-skipped); color: var(--BADGE_TEXT) !important; }
     .badge-main-product:not(:disabled):not(.disabled),
-        .badge-priority-p3:not(:disabled):not(.disabled) { border: none; background-color: hsl(196, 93%, 33%); color: var(--BADGE_TEXT)  !important;}
+        .badge-priority-p3:not(:disabled):not(.disabled) { border: none; background-color: var(--status-primary); color: var(--BADGE_TEXT)  !important;}
     
     .badge-status-active:not(:disabled):not(.disabled),
-        .badge-status-passed:not(:disabled):not(.disabled) { border: none; background-color: hsl(92, 99%, 24%); color: var(--BADGE_TEXT)  !important;}
-    /*.badge-status-passed:not(:disabled):not(.disabled) { border: none; background-color: hsl(151, 100%, 27%); color: var(--BADGE_TEXT)  !important;}*/
+        .badge-status-passed:not(:disabled):not(.disabled) { border: none; background-color: var(--status-passed); color: var(--BADGE_TEXT)  !important;}
 
     .badge-status-inactive:not(:disabled):not(.disabled),
-        .badge-status-executing:not(:disabled):not(.disabled), /* Or make it use 'main-product' color instead? Hrm. */
-        .badge-status-pending:not(:disabled):not(.disabled) { border: none; background-color: hsl(181, 21%, 38%); color: var(--BADGE_TEXT)  !important;}
+        .badge-status-executing:not(:disabled):not(.disabled),
+        .badge-status-pending:not(:disabled):not(.disabled) { border: none; background-color: var(--status-pending); color: var(--BADGE_TEXT)  !important;}
 
-    /* Too many colors sometimse(?). Just as in code-syntaxing there is an overload of tints/shades so it's hard to focuson a particular one. */
-    .badge-status-cancelled:not(:disabled):not(.disabled)  { border: none; background-color: hsl(276, 40%, 47%); color: var(--BADGE_TEXT)  !important;}
+    .badge-status-cancelled:not(:disabled):not(.disabled)  { border: none; background-color: var(--status-cancelled); color: var(--BADGE_TEXT)  !important;}
+
     .badge-status-blocked:not(:disabled):not(.disabled), 
-        .badge-status-expired:not(:disabled):not(.disabled)  { border: none; background-color: hsl(334, 43%, 48%); color: var(--BADGE_TEXT)  !important;}
+        .badge-status-expired:not(:disabled):not(.disabled)  { border: none; background-color: var(--status-blocked); color: var(--BADGE_TEXT)  !important;}
     
 /*
     Login Page 
@@ -127,7 +139,7 @@
     .tab-content { border-color: var(--M3); }
     .close { color: var(--ALARMT); text-shadow: none; opacity: 0.6; }
     .close:hover { color: var(--ALARMT); text-shadow: none; opacity: 1; }
-    .ql-toolbar.ql-snow { border-color: var(--M3); } /* #06c interseting hover/select blue. */
+    .ql-toolbar.ql-snow { border-color: var(--M3); }
     /* TODO: text-option toolbar is ignoring every color configuration. Nno real way to modify :\ */
 
     .form-group.required .control-label:after, .nav-link.required:after { color: var(--ALARMT); }
@@ -207,9 +219,8 @@
     .table, .table .thead-light th { background-color: var(--M1); border-color: var(--M3); color: var(--MT1); }
     pre { color: var(--MT1); }
     .border { border-color: var(--M3) !important; }    
-    .chartjs-render-monitor { background-color: hsl(182, 3%, 38%); } /* HACK: to see black numbers in center.*/
     
-    /* HACK? When viewing TC it lights up */ 
+    /* HACK: When viewing TC it lights up, his bug :) */ 
     .disabled-hover:hover { background-color: var(--M1) !important;}
     
     /* Sidebar on the left side*/
