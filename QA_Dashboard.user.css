@@ -3,7 +3,7 @@
 @name QA_Dashboard
 @namespace github.com/Personwithhat/StylusStyles
 @homepageURL https://github.com/Personwithhat/StylusStyles
-@version 1.0.4
+@version 1.0.5
 @updateURL https://github.com/Personwithhat/StylusStyles/raw/master/QA_Dashboard.user.css
 @description Style for QA Dashboard
 @author PersonWithHat
@@ -37,8 +37,9 @@
 
     /* Status Colors: Dark-mode */
     --BADGE_TEXT:       #000;
+    --status-primary:   hsl(196, 93%, 33%); 
     --status-pending:   hsl(181, 21%, 38%);
-    --status-executing: hsl(196, 93%, 33%); 
+    --status-executing: var(--status-primary); 
     --status-passed:    hsl(92, 99%, 24%);
     --status-skipped:   hsl(44, 94%, 33%);
     --status-blocked:   hsl(334, 43%, 48%);
@@ -48,6 +49,7 @@
     /* Chart.js colors */
     --chart-border: var(--M1);
     --chart-text-color: var(--MT1);
+    --chart-tooltip-text-color: var(--chart-text-color);
 }   
     
     /* Hide scrollbars, don't want'em. */
